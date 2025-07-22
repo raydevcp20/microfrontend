@@ -2,6 +2,7 @@ import { loadRemoteModule } from '@angular-architects/native-federation';
 import { Routes } from '@angular/router';
 import { WebComponentWrapperComponent, WrapperConfig } from './web-component-wrapper/web-component-wrapper.component';
 import { startsWith } from './starts-with';
+import { loginGuard } from './guards/login.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -9,6 +10,7 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () =>
       loadRemoteModule('mfe1', './Component').then((m) => m.HomeComponent),
+    canActivate: [loginGuard]
   },
   // { path: 'ray', loadComponent: () => loadRemoteModule('ray','./ray').then(m => {
   //     // Adiciona o elemento no router-outlet
