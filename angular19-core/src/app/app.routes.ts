@@ -3,15 +3,17 @@ import { Routes } from '@angular/router';
 import { WebComponentWrapperComponent, WrapperConfig } from './web-component-wrapper/web-component-wrapper.component';
 import { startsWith } from './starts-with';
 import { loginGuard } from './guards/login.guard';
+import { CoreComponent } from './pages/core/core.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  {
-    path: 'home',
-    loadComponent: () =>
-      loadRemoteModule('mfe1', './Component').then((m) => m.HomeComponent),
-    canActivate: [loginGuard]
-  },
+  { path: '', redirectTo: '/core', pathMatch: 'full' },
+  { path: 'core', component: CoreComponent},
+  // {
+  //   path: 'home',
+  //   loadComponent: () =>
+  //     loadRemoteModule('mfe1', './Component').then((m) => m.HomeComponent),
+  //   canActivate: [loginGuard]
+  // },
   // { path: 'ray', loadComponent: () => loadRemoteModule('ray','./ray').then(m => {
   //     // Adiciona o elemento no router-outlet
   //     const outlet = document.querySelector('router-outlet');
