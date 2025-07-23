@@ -32,6 +32,7 @@
 					"builder": "@angular-architects/native-federation:build",
 					"options": {
 						"target": "angular19-core:serve-original:development",
+						"proxyConfig": "proxy.conf.json",
 						"rebuildDelay": 0,
 						"dev": true,
 						"port": 0
