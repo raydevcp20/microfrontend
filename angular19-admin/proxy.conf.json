@@ -1,0 +1,11 @@
+{
+  "/api/ucloud": {
+    "target": "https://pmc-testes.usto.re",
+    "pathRewrite": {
+      "^/api/ucloud": "/ucloud/rest"
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

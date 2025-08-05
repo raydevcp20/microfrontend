@@ -2,10 +2,10 @@ const { withNativeFederation, shareAll } = require('@angular-architects/native-f
 
 module.exports = withNativeFederation({
 
-  name: 'angular19-admin',
+  name: 'admin',
 
   exposes: {
-    './Component': './src/app/home/home.component.ts',
+    './routes': './src/app/app.routes.ts',
   },
 
   shared: {

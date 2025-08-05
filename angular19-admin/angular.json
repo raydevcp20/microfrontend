@@ -32,6 +32,7 @@
 					"builder": "@angular-architects/native-federation:build",
 					"options": {
 						"target": "angular19-admin:serve-original:development",
+						"proxyConfig": "proxy.conf.json",
 						"rebuildDelay": 0,
 						"dev": true,
 						"port": 0
@@ -120,10 +121,13 @@
 					},
 					"defaultConfiguration": "development",
 					"options": {
-						"port": 4201
+						"port": 4301
 					}
 				}
 			}
 		}
-	}
+  },
+  "cli": {
+    "analytics": false
+  }
 }
