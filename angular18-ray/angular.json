@@ -32,6 +32,7 @@
 					"builder": "@angular-architects/native-federation:build",
 					"options": {
 						"target": "angular18-ray:serve-original:development",
+						"proxyConfig": "src/proxy.conf.json",
 						"rebuildDelay": 0,
 						"dev": true,
 						"port": 0
@@ -120,10 +121,14 @@
 					},
 					"defaultConfiguration": "development",
 					"options": {
-						"port": 4202
+						"proxyConfig": "src/proxy.conf.json",
+						"port": 4019
 					}
 				}
 			}
 		}
-	}
+  },
+  "cli": {
+    "analytics": false
+  }
 }

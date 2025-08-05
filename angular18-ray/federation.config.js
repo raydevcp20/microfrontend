@@ -7,9 +7,8 @@ module.exports = withNativeFederation({
   exposes: {
     './ray': './src/bootstrap.ts',
   },
-
   shared: {
-    ...shareAll({ singleton: true, strictVersion: false, requiredVersion: 'auto' }),
+    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' })
   },
 
   skip: [
