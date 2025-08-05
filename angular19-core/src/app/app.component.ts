@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, NgZone } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { LoginService } from './services/login.service';
 
@@ -13,7 +13,7 @@ export class AppComponent {
   login = inject(LoginService);
 
   constructor(){
-
+    // globalThis.ngZone = inject(NgZone);
   }
 
   ngOnInit(): void {

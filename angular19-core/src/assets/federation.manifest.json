@@ -1,4 +1,4 @@
 {
-	"mfe1": "http://localhost:4201/remoteEntry.json",
-	"ray": "http://localhost:4202/remoteEntry.json"
+	"ray": "http://localhost:4019/remoteEntry.json",
+	"admin":"http://localhost:4301/remoteEntry.json"
 }

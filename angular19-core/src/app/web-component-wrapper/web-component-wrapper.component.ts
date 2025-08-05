@@ -1,5 +1,6 @@
 import { loadRemoteModule } from '@angular-architects/native-federation';
 import { Component, ElementRef, inject, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 export interface WrapperConfig {
     remoteName: string;
@@ -20,40 +21,19 @@ export const initWrapperConfig: WrapperConfig = {
   styleUrl: './web-component-wrapper.component.scss',
 })
 export class WebComponentWrapperComponent implements OnInit {
-
   elm = inject(ElementRef);
+  route = inject(ActivatedRoute);
 
-  @Input() config = initWrapperConfig;
+  config?: WrapperConfig;
 
   async ngOnInit() {
-    const { exposedModule, remoteName, elementName } = this.config;
+    this.config = this.route.snapshot.data['config'];
 
-    await loadRemoteModule(remoteName, exposedModule);
-    const root = document.createElement(elementName);
+    if (!this.config) {
+      throw new Error('WebComponentWrapperComponent requires a config object in route data');
+    }
+    await loadRemoteModule(this.config.remoteName, this.config.exposedModule);
+    const root = document.createElement(this.config.elementName);
     this.elm.nativeElement.appendChild(root);
   }
-  // ngOnInit(): void {
-  //   const container = document.getElementById('web-component-container');
-  //   if (container) {
-  //     // Aguarda até que o Web Component esteja registrado
-  //     if (typeof customElements.get('ray-component') === 'undefined') {
-  //       customElements
-  //         .whenDefined('ray-component')
-  //         .then(() => {
-  //           console.log(
-  //             'Web Component <ray-component> registrado com sucesso!'
-  //           );
-  //           const element = document.createElement('ray-component');
-  //           container.appendChild(element);
-  //         })
-  //         .catch((err) => {
-  //           console.error('Erro ao aguardar o registro do Web Component:', err);
-  //         });
-  //     } else {
-  //       // Se já estiver registrado, cria o elemento imediatamente
-  //       const element = document.createElement('ray-component');
-  //       container.appendChild(element);
-  //     }
-  //   }
-  // }
 }

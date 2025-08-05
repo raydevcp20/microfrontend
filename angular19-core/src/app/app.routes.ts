@@ -6,14 +6,12 @@ import { loginGuard } from './guards/login.guard';
 import { CoreComponent } from './pages/core/core.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/core', pathMatch: 'full' },
+  { path: '', redirectTo: '/ray', pathMatch: 'full' },
   { path: 'core', component: CoreComponent},
-  // {
-  //   path: 'home',
-  //   loadComponent: () =>
-  //     loadRemoteModule('mfe1', './Component').then((m) => m.HomeComponent),
-  //   canActivate: [loginGuard]
-  // },
+  {
+    path: 'admin',
+    loadChildren: () => loadRemoteModule('admin', './routes').then((m) => m.routes),
+  },
   // { path: 'ray', loadComponent: () => loadRemoteModule('ray','./ray').then(m => {
   //     // Adiciona o elemento no router-outlet
   //     const outlet = document.querySelector('router-outlet');
@@ -43,4 +41,15 @@ export const routes: Routes = [
       } as WrapperConfig,
     },
   },
+  // {
+  //       matcher: startsWith('admin'),
+  //       component: WebComponentWrapperComponent,
+  //       data: {
+  //         config: {
+  //           remoteName: 'ucloud-ui-admin',
+  //           exposedModule: './admin-project',
+  //           elementName: 'admin-project-component',
+  //         } as WrapperConfig,
+  //       },
+  //     },
 ];
