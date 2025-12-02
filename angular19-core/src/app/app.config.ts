@@ -6,18 +6,6 @@ import { INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,  includeBearerTokenInterceptor
 import { tenantInterceptor } from './interceptors/tenant.interceptor';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { provideKeycloakAngular, urlCondition } from './keycloak.config';
-import { UcloudUiCoreTranslateHttpLoader } from './utils/ucloud-ui-core-http-loader';
-import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
-
-const httpLoaderFactory: (http: HttpClient) => TranslateLoader = (
-  http: HttpClient
-) =>
-  new UcloudUiCoreTranslateHttpLoader(
-    http,
-    './i18n/',
-    '.json',
-    'assets/federation.manifest.json'
-  );
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,13 +21,5 @@ export const appConfig: ApplicationConfig = {
       provide: INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
       useValue: [urlCondition]
     },
-    provideTranslateService({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
   ]
 };

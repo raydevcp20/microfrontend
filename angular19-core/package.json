@@ -19,8 +19,6 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
-    "@ngx-translate/core": "16.0.4",
-    "@ngx-translate/http-loader": "16.0.1",
     "@softarc/native-federation-node": "^2.0.10",
     "es-module-shims": "^1.5.12",
     "keycloak-angular": "^19.0.2",
